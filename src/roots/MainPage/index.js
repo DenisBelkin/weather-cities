@@ -26,15 +26,15 @@ const MainPage = (props) => {
     },[]);
     return (
         <>
-            <div>
-                <SelectCity {...props}/>
-            </div>
             <h3>Current city: {geoCity}</h3>
             {
                 isLoading
                     ? <Loader/>
                     : <WeatherTable data={data}/>
             }
+            <div>
+                <SelectCity {...props}/>
+            </div>
         </>
     )
 };
