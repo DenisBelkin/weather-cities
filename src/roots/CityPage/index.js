@@ -15,10 +15,10 @@ import WeatherTable from '../../components/WeatherTable';
 const CityPage = (props) => {
     const [isLoading, setLoading] = useState(true)
     const [data, setData] = useState(null)
-    const countryTag = find(countriesTags, (value, key) => props.currentCity === key);
-
+    const currentCity = props.currentCity.replace('/', '');
+    const countryTag = find(countriesTags, (value, key) => currentCity === key);
     useMemo(()=>{
-        axios(`${mainUrl}weather?q=${props.currentCity},${countryTag}&appid=${APIkey}`)
+        axios(`${mainUrl}weather?q=${currentCity},${countryTag}&appid=${APIkey}`)
             .then((response)=> {
                 setData(response.data)
             })
